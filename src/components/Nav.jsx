@@ -1,20 +1,22 @@
-import { Menu } from 'lucide-react'
 import React from 'react'
-
+import {headerLogo} from '../assets/images'
+import {navLinks} from '../constants'
+import {hamburger} from '../assets/icons'
 const Nav = () => {
   return (
-    <header className='p-5'>
-      <nav className='flex justify-between items-center'>
+    <header className='padding-x py-8 absolute z-10 w-full'>
+      <nav className='flex justify-between items-center max-container'>
         <a href="/">
-          <h2 className='text-3xl font-bold leading-10 text-orange-400'>Nike</h2>
+          <img src={headerLogo} alt="logo" width={126} height={29} />
         </a>
-        <ul className='hidden md:flex gap-10 justify-center items-center text-sm text-neutral-500'>
-          <li>Home</li>
-          <li>About Us</li>
-          <li>Products</li>
-          <li>Contact Us</li>
+        <ul className='flex-1 flex justify-center items-center gap-16 max-lg:hidden'>
+          {navLinks.map((item,idx)=>(
+            <li className='leading-normal font-montserrat text-lg text-slate-gray' key={idx}>{item.label}</li>
+          ))}
         </ul>
-        <Menu className='block md:hidden'/>
+          <div>
+             <img className='hidden xl:flex max-lg:block' src={hamburger} alt="burger icon"  width={20}/>
+          </div>
       </nav>
     </header>
   )
